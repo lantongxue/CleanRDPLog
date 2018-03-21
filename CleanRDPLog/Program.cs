@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.IO;
 
@@ -39,6 +39,11 @@ namespace CleanRDPLog
                 TSC_Servers.DeleteSubKey(server_name);
             }
 
+            TSC_Servers.Close();
+            TSC_Default.Close();
+            TSC.Close();
+            currentUser.Close();
+
             Console.WriteLine("开始清理缓存配置文件......");
 
             string Default_rdp_file = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -48,6 +53,8 @@ namespace CleanRDPLog
             Console.WriteLine("清理完毕！ 请按任意键继续....");
 
             Console.ReadKey();
+
+            
         }
     }
 }
